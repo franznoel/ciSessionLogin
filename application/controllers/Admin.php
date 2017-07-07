@@ -10,9 +10,13 @@ class Admin extends CI_Controller {
     public function login() {
         $this->load->library('parser');
 
+        $username = $this->input->post('email');
+        $password = $this->input->post('password');
+        $hashedPassword = md5(sha1($password)); // password is password
+
         $data = array(
-            'username' => $this->input->post('username'),
-            'password' => $this->input->post('password')
+            'username' => $username,
+            'hashedPassword' => $hashedPassword,
         );
 
         $this->parser->parse('admin/login',$data);

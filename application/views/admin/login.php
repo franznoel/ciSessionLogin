@@ -7,7 +7,7 @@
         <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
     <body>
-        {username} {password}
+        {username} {hashedPassword}
         <div class="container">
             <div class="row">
                 <div class="col-md-offset-3 col-md-6">
@@ -15,8 +15,8 @@
                         <div class="panel-body">
                             <form method="post" action="login">
                                 <div class="form-group">
-                                    <label for="username">Username</label>
-                                    <input type="text" name="username" class="form-control" placeholder="Username" />
+                                    <label for="email">Email</label>
+                                    <input type="text" name="email" class="form-control" placeholder="Email" />
                                 </div>
                                 <div class="form-group">
                                     <label for="password">Password</label>
