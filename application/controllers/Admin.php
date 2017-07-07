@@ -3,6 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Admin extends CI_Controller {
 
+    public $dsn = 'mysqli://root:root@localhost/ciSessionLogin?char_set=utf8&dbcollat=utf8_general_ci&cache_on=true&cachedir=/path/to/cache';
+
     public function index() {
         $this->load->view('admin/index');
     }
@@ -10,15 +12,24 @@ class Admin extends CI_Controller {
     public function login() {
         $this->load->library('parser');
 
-        $username = $this->input->post('email');
+        $email = $this->input->post('email');
         $password = $this->input->post('password');
-        $hashedPassword = md5(sha1($password)); // password is password
 
-        $data = array(
-            'username' => $username,
-            'hashedPassword' => $hashedPassword,
-        );
+        if ($email && $password) {
+            $this->load->model('user');
+            $user = $this->user->getUser($email,$password);
+            print_r($user);
 
-        $this->parser->parse('admin/login',$data);
+
+            // $data = array(
+            //     'user' => $user,
+            //     'email' => $email
+            // );
+            // $this->parser->parse('admin/login',$data);
+        } else {
+            $this->load->view('admin/login');
+        }
+
     }
+
 }
