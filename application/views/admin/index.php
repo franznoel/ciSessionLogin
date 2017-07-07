@@ -9,7 +9,7 @@
     <body>
         <div class="container">
             <h3>Admin</h3>
-            <p>You are now logged in!</p>
+            <p>You are now logged in with the user {user}!</p>
         </div>
     </body> 
 </html>
